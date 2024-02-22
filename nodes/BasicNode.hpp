@@ -32,51 +32,58 @@ void insert(Node **list, Node **newNode)
     // std::cout << "Node Value: " << (*list)->value << "\n"; // impresion para ver como funcona
 }
 
-void push(Node **list, Node **newNode){
-    if(list == NULL){
+void push(Node **list, Node **newNode)
+{
+    if (list == NULL)
+    {
         (*list)->next = *newNode;
         return;
     }
-	Node *aux = *list;
-	while(aux->next!=NULL) aux = aux->next;
-    std::cout<<"last: "<<(**list).next<<aux<<"\n";
+    Node *aux = *list;
+    while (aux->next != NULL)
+        aux = aux->next;
+    std::cout << "last: " << (**list).next << aux << "\n";
     aux->next = *newNode;
-	// (**list).next = *newNode;
+    // (**list).next = *newNode;
     (*list)->length += 1;
 }
 
-void insertByIndex(Node **list, Node ** newNode, int index){
-    std::cout<<"me meti al index bet";
-    if(list == NULL){
-        std::cout<<"Lista vacia intente de nuevo\n";
+void insertByIndex(Node **list, Node **newNode, int index)
+{
+    std::cout << "me meti al index bet";
+    if (list == NULL)
+    {
+        std::cout << "Lista vacia intente de nuevo\n";
         return;
     }
-    if(index < 0 || index>(*list)->length+1){
-        std::cout<<"No se inserto. Elige otro index\n";
+    if (index < 0 || index > (*list)->length + 1)
+    {
+        std::cout << "No se inserto. Elige otro index\n";
         return;
     }
     Node *aux = *list;
-    Node *temp = new Node;
     int i = 0;
-    while (i!=index)
+    while (i != index)
     {
         aux = aux->next;
         ++i;
     }
     (*newNode)->next = aux->next;
     aux->next = *newNode;
-    if(index==0) (*list) = temp;
+    if (index == 0)
+        (*list) = *newNode;
     (*list)->length += 1;
     // *list = prevList;
 }
 
-
-void trySome(Node **list) {
+void trySome(Node **list)
+{
     (*list)->value = 900;
-    std::cout<<"Try some: "<<(*list)->next->value;
+    std::cout << "Try some: " << (*list)->next->value;
 }
 
-void freeLinkedList(Node **list){
+void freeLinkedList(Node **list)
+{
     Node *forFree = *list;
     while (*list)
     {
@@ -84,7 +91,6 @@ void freeLinkedList(Node **list){
         delete forFree;
         forFree = *list;
     }
-    
 }
 
 // No es paso por referencia, es paso por valor para no alterar la lista
