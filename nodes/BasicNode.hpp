@@ -32,20 +32,27 @@ void insert(Node **list, Node **newNode)
     // std::cout << "Node Value: " << (*list)->value << "\n"; // impresion para ver como funcona
 }
 
-void push(Node **list, Node **newNode)
+void push(Node *&list, Node *&newNode)
+// void push(Node **list, Node **newNode)
 {
+    bool condition = list == NULL;
+    std::cout << "is true or false" << condition << "\n";
     if (list == NULL)
     {
-        (*list)->next = *newNode;
+        std::cout << "Entre: "
+                  << "\n";
+        list = newNode;
+        std::cout << "Pase Entre: "
+                  << "\n";
         return;
     }
-    Node *aux = *list;
+    Node *aux = list;
     while (aux->next != NULL)
         aux = aux->next;
-    std::cout << "last: " << (**list).next << aux << "\n";
-    aux->next = *newNode;
+    std::cout << "last: " << list->next << aux << "\n";
+    aux->next = newNode;
     // (**list).next = *newNode;
-    (*list)->length += 1;
+    list->length += 1;
 }
 
 void insertByIndex(Node **list, Node **newNode, int index)
